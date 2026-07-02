@@ -1,7 +1,6 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-  // Permite imágenes de Supabase Storage y fuentes externas
   images: {
     remotePatterns: [
       {
@@ -11,6 +10,9 @@ const nextConfig: NextConfig = {
         pathname: '/storage/v1/object/public/**',
       },
     ],
+  },
+  experimental: {
+    appDir: true,
   },
 }
 
