@@ -11,11 +11,11 @@ import { Separator } from '@/components/ui/separator'
 
 const navItems = [
   { label: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { label: 'Analytics', href: '/dashboard/analytics', icon: BarChart2, description: 'Gráficos · Tendencias' },
-  { label: 'Biblioteca', href: '/dashboard/biblioteca', icon: BookOpen, description: 'Libros físicos · Vinted' },
-  { label: 'Contenido', href: '/dashboard/contenido', icon: FileText, description: 'TikTok · Reels · Shorts' },
-  { label: 'Productos', href: '/dashboard/productos', icon: ShoppingBag, description: 'Digitales · Gumroad' },
-  { label: 'Ventas', href: '/dashboard/ventas', icon: TrendingUp, description: 'Todos los canales' },
+  { label: 'Analytics', href: '/analytics', icon: BarChart2, description: 'Gráficos · Tendencias' },
+  { label: 'Biblioteca', href: '/biblioteca', icon: BookOpen, description: 'Libros físicos · Vinted' },
+  { label: 'Contenido', href: '/contenido', icon: FileText, description: 'TikTok · Reels · Shorts' },
+  { label: 'Productos', href: '/productos', icon: ShoppingBag, description: 'Digitales · Gumroad' },
+  { label: 'Ventas', href: '/ventas', icon: TrendingUp, description: 'Todos los canales' },
 ]
 
 export function Sidebar() {
@@ -38,10 +38,7 @@ export function Sidebar() {
       <nav className="flex flex-1 flex-col gap-1 p-4">
         {navItems.map((item) => {
           const Icon = item.icon
-          const isActive =
-            item.href === '/dashboard'
-              ? pathname === '/dashboard'
-              : pathname.startsWith(item.href)
+          const isActive = pathname === item.href || pathname.startsWith(item.href + '/')
 
           return (
             <Link
@@ -72,10 +69,10 @@ export function Sidebar() {
 
       <div className="p-4">
         <Link
-          href="/dashboard/settings"
+          href="/settings"
           className={cn(
             'flex items-center gap-3 rounded-md px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground',
-            pathname === '/dashboard/settings' && 'bg-accent text-accent-foreground'
+            pathname === '/settings' && 'bg-accent text-accent-foreground'
           )}
         >
           <Settings className="h-4 w-4" />
